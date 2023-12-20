@@ -56,18 +56,18 @@ namespace HangmanApp
                     }
                 }
 
-                if (Array.Exists(arrayRandomWord, element => element == FILLER))
-                {
-                    Console.Clear();
-                    triesCount++;
-                    continue;
-                }
-                else
+                if (!arrayRandomWord.Contains(FILLER))
                 {
                     triesCount++;
                     Console.WriteLine($"\nThe word was {randomWord}, you guessed correct, congratulations!");
                     Console.WriteLine($"\nYou used a total of {triesCount} tries to guess the word!");
                     return;
+                }
+                else
+                {
+                    Console.Clear ();
+                    triesCount++;
+                    continue;
                 }
             }
 
