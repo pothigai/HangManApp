@@ -8,7 +8,6 @@ namespace HangmanApp
             const int MAX_TRIES = 20;
             const char FILLER = '_';
 
-            List<char> guessedLettersList = new List<char>();
             List<string> words = new List<string> { "Allosaurus", "Brontosaurus", "Ceratosaurus", "Diplodocus" };
 
             Random randomList = new Random();
@@ -16,19 +15,21 @@ namespace HangmanApp
             int triesCount = 0;
             int wordIndex = randomList.Next(words.Count);
             string randomWord = words[wordIndex].ToLower();
-            char[] arrayRandomWord = new char[randomWord.Length];
+            char[] gameState = new char[randomWord.Length];
 
 
             Console.WriteLine("Welcome to the hangman game!");
 
+            List<char> guessedLettersList = new List<char>();
+
             for (int i = 0; i < randomWord.Length; i++)
             {
-                arrayRandomWord[i] = FILLER;
+                gameState[i] = FILLER;
             }
 
             while (triesCount < MAX_TRIES)
             {
-                Console.WriteLine($"\nHidden word: {new string(arrayRandomWord)}");
+                Console.WriteLine($"\nHidden word: {new string(gameState)}");
                 Console.WriteLine($"You have {MAX_TRIES - triesCount} tries to guess the word correctly! Enter your guess:");
                 Console.WriteLine($"Your guesses: ");
 
@@ -52,11 +53,11 @@ namespace HangmanApp
                 {
                     if (guessLetter == randomWord[i])
                     {
-                        arrayRandomWord[i] = guessLetter;
+                        gameState[i] = guessLetter;
                     }
                 }
 
-                if (!arrayRandomWord.Contains(FILLER))
+                if (!gameState.Contains(FILLER))
                 {
                     triesCount++;
                     Console.WriteLine($"\nThe word was {randomWord}, you guessed correct, congratulations!");
