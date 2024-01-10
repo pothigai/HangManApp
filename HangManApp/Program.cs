@@ -10,22 +10,22 @@ namespace HangmanApp
 
             List<string> words = new List<string> { "Allosaurus", "Brontosaurus", "Ceratosaurus", "Diplodocus" };
 
-            Random randomList = new Random();
+            Random rndWord = new Random();
 
             int triesCount = 0;
-            int wordIndex = randomList.Next(words.Count);
+            int wordIndex = rndWord.Next(words.Count);
             string randomWord = words[wordIndex].ToLower();
-            char[] gameState = new char[randomWord.Length];
-
-
-            Console.WriteLine("Welcome to the hangman game!");
 
             List<char> guessedLettersList = new List<char>();
+            
+            char[] gameState = new char[randomWord.Length];
 
             for (int i = 0; i < randomWord.Length; i++)
             {
                 gameState[i] = FILLER;
             }
+            
+            Console.WriteLine("Welcome to the hangman game!");
 
             while (triesCount < MAX_TRIES)
             {
@@ -59,7 +59,6 @@ namespace HangmanApp
 
                 if (!gameState.Contains(FILLER))
                 {
-                    triesCount++;
                     Console.WriteLine($"\nThe word was {randomWord}, you guessed correct, congratulations!");
                     Console.WriteLine($"\nYou used a total of {triesCount} tries to guess the word!");
                     return;
@@ -68,7 +67,6 @@ namespace HangmanApp
                 {
                     Console.Clear ();
                     triesCount++;
-                    continue;
                 }
             }
 
