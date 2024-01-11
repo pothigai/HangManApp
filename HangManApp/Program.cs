@@ -16,8 +16,6 @@ namespace HangmanApp
             int wordIndex = rndWord.Next(words.Count);
             string randomWord = words[wordIndex].ToLower();
 
-            List<char> guessedLettersList = new List<char>();
-            
             char[] gameState = new char[randomWord.Length];
 
             for (int i = 0; i < randomWord.Length; i++)
@@ -26,6 +24,8 @@ namespace HangmanApp
             }
             
             Console.WriteLine("Welcome to the hangman game!");
+
+            List<char> guessedLettersList = new List<char>();
 
             while (triesCount < MAX_TRIES)
             {
@@ -66,8 +66,9 @@ namespace HangmanApp
                 else
                 {
                     Console.Clear ();
-                    triesCount++;
                 }
+
+                triesCount++;
             }
 
             if (triesCount == MAX_TRIES)
