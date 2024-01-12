@@ -1,5 +1,4 @@
-﻿using System.Diagnostics.Metrics;
-namespace HangmanApp
+﻿namespace HangmanApp
 {
     internal class Program
     {
