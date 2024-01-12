@@ -25,7 +25,7 @@ namespace HangmanApp
             
             Console.WriteLine("Welcome to the hangman game!");
 
-            List<char> guessedLettersList = new List<char>();
+            List<char> guessedLetters = new List<char>();
 
             while (triesCount < MAX_TRIES)
             {
@@ -33,21 +33,21 @@ namespace HangmanApp
                 Console.WriteLine($"You have {MAX_TRIES - triesCount} tries to guess the word correctly! Enter your guess:");
                 Console.WriteLine($"Your guesses: ");
 
-                foreach (char c in guessedLettersList)
+                foreach (char c in guessedLetters)
                 {
                     Console.Write(c);
                 }
 
                 char guessLetter = Console.ReadKey().KeyChar;
 
-                if (guessedLettersList.Contains(guessLetter))
+                if (guessedLetters.Contains(guessLetter))
                 {
                     Console.Clear();
                     Console.WriteLine("\nYou have already guessed that letter. Try again.");
                     continue;
                 }
 
-                guessedLettersList.Add(guessLetter);
+                guessedLetters.Add(guessLetter);
 
                 for (int i = 0; i < randomWord.Length; i++)
                 {
@@ -76,7 +76,7 @@ namespace HangmanApp
                 Console.WriteLine($"You ran out of tries, the word was {randomWord}!");
                 Console.WriteLine($"Your guesses: ");
 
-                foreach (char c in guessedLettersList)
+                foreach (char c in guessedLetters)
                 {
                     Console.Write(c);
                 }
