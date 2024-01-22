@@ -46,6 +46,13 @@
                     continue;
                 }
 
+                if (!char.IsLetter(guessLetter))
+                {
+                    Console.Clear();
+                    Console.WriteLine("\nInvalid input, please enter a letter!");
+                    continue;
+                }
+
                 guessedLetters.Add(guessLetter);
 
                 for (int i = 0; i < randomWord.Length; i++)
